@@ -1,6 +1,7 @@
 # Page de liens Budget Talk
 
-Adresse : https://leomira-1999.github.io/liens/
+Adresse : https://budgettalk.vercel.app/ (projet Vercel « budgettalk », relié à ce dépôt, dossier `liens`, mis à jour tout seul à chaque push sur `main`).
+L'ancienne adresse https://leomira-1999.github.io/liens/ renvoie vers la nouvelle.
 
 Tout est dans ce dossier `liens/`. **Ne rien toucher à la racine du dépôt** (index.html, privacy.html, google6ecabfd927d00eea.html servent à autre chose). Ne jamais créer de fichier ou de dossier dont le nom commence par `_`.
 
