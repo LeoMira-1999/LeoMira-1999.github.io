@@ -30,6 +30,7 @@ La bande-annonce porte `type: "trailer"` : elle s'affiche toujours dans « Comme
 - `index.html` : la page (en-tête, bouton YouTube, réseaux, pied de page).
 - `videos.js` : les vidéos (données).
 - `app.js` : affiche les vidéos à partir de `videos.js`.
+- `stats.js` : envoie un évènement « lien_clic » (cible : video, chaine_youtube, instagram, tiktok, facebook) à Vercel Web Analytics à chaque clic sortant.
 - `style.css` : l'apparence (couleurs du design system Budget Talk).
 - `fonts/` : Montserrat 800 et 900 (titres).
 - `avatar.jpg` : le logo de la chaîne (256x256, affiché en rond). Pour le changer, remplacer ce fichier par une image carrée de même nom.
