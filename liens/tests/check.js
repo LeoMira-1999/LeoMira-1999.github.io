@@ -108,6 +108,8 @@ async function openPage(browser, viewport, opts = {}) {
     const url = (m.location() && m.location().url) || "";
     // Vignettes YouTube bloquées par le réseau (bac à sable) : signalé à part, pas une erreur de la page.
     if (url.includes(THUMB_HOST) && /Failed to load resource/.test(m.text())) { ignoredImageErrors++; return; }
+    // Script Vercel Web Analytics : n'existe que sur Vercel, absent en local.
+    if (url.includes("/_vercel/insights/")) return;
     errors.push("console: " + m.text() + (url ? " (" + url + ")" : ""));
   });
   page.on("request", (r) => {
