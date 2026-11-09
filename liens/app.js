@@ -1,5 +1,5 @@
 /* Budget Talk · page de liens. Rendu des vidéos à partir de videos.js.
-   Ne pas modifier pour ajouter une vidéo : tout se fait dans videos.js. */
+   Les vidéos viennent de /api/videos (flux RSS YouTube) ; videos.js sert de secours et de bande-annonce. */
 (function () {
   "use strict";
 
@@ -32,9 +32,12 @@
   }
   var channelUrl = typeof data.channelUrl === "string" && data.channelUrl.indexOf("https://") === 0 ? data.channelUrl : CHANNEL;
 
+  function render(list) {
+  featuredBox.textContent = "";
+  ["list-autres", "list-debut"].forEach(function (id) { document.getElementById(id).textContent = ""; });
   // 2. Vidéos publiées, plus récentes d'abord
   var now = Date.now();
-  var published = data.videos.filter(function (v) {
+  var published = list.filter(function (v) {
     if (!v || typeof v.id !== "string" || !ID_RE.test(v.id)) return false;
     var t = Date.parse(v.publishedAt);
     return !isNaN(t) && t <= now;
@@ -144,4 +147,17 @@
 
   fill("sec-autres", "list-autres", others, null, "(min-width: 720px) 360px, 112px");
   fill("sec-debut", "list-debut", trailers, "Bande-annonce", "(min-width: 720px) 160px, 112px");
+  }
+
+  render(data.videos);
+
+  // 6. Mise à jour automatique : vidéos longues lues sur YouTube (RSS, via /api/videos).
+  // La bande-annonce reste celle de videos.js. En cas d'échec, la liste de videos.js reste affichée.
+  if (window.fetch && /^https?:$/.test(location.protocol)) {
+    fetch("/api/videos").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      if (!j || !Array.isArray(j.videos) || !j.videos.length) return;
+      var kept = data.videos.filter(function (v) { return v && v.type === "trailer"; });
+      render(j.videos.concat(kept));
+    }).catch(function () {});
+  }
 })();
