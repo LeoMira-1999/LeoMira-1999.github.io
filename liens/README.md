@@ -5,7 +5,11 @@ L'ancienne adresse https://leomira-1999.github.io/liens/ renvoie vers la nouvell
 
 Tout est dans ce dossier `liens/`. **Ne rien toucher à la racine du dépôt** (index.html, privacy.html, google6ecabfd927d00eea.html servent à autre chose). Ne jamais créer de fichier ou de dossier dont le nom commence par `_`.
 
-## Comment ajouter une vidéo
+## Mise à jour automatique
+
+La page lit toute seule les vidéos longues de la chaîne (flux RSS public de YouTube, sans les Shorts) via `liens/api/videos.js`, mise en cache 15 min. Les vidéos programmées apparaissent à leur sortie. `videos.js` sert de secours si YouTube ne répond pas, et porte la bande-annonce. Ajouter une vidéo à la main n'est donc plus nécessaire.
+
+## Comment ajouter une vidéo (secours)
 
 1. Ouvrir `liens/videos.js` (c'est le seul fichier à modifier).
 2. Copier un bloc `{ id: ..., title: ..., publishedAt: ... },` et le coller **en haut de la liste**.
