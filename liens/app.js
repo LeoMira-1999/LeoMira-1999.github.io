@@ -157,7 +157,9 @@
     fetch("/api/videos").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
       if (!j || !Array.isArray(j.videos) || !j.videos.length) return;
       var kept = data.videos.filter(function (v) { return v && v.type === "trailer"; });
-      render(j.videos.concat(kept));
+      var trailerIds = kept.map(function (v) { return v.id; });
+      var longs = j.videos.filter(function (v) { return trailerIds.indexOf(v.id) < 0; });
+      render(longs.concat(kept));
     }).catch(function () {});
   }
 })();
