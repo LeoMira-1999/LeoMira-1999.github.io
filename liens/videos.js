@@ -2,6 +2,8 @@
 window.BT_DATA = {
   channelUrl: "https://www.youtube.com/@BudgetTalk_FR",
   videos: [
+    { id: "j5tmY8FhQCw", title: "Ton budget en 3 enveloppes (sans te priver de tout)", publishedAt: "2026-11-11T17:00:00Z" },
+    { id: "RcMNId5UItY", title: "Tes dettes en 3 étapes : la liste, le vrai coût, le plan", publishedAt: "2026-11-08T09:00:00Z" },
     { id: "Wtjdi2wJWPk", title: "Découvert le 20 du mois : 3 étapes pour en sortir", publishedAt: "2026-11-04T17:00:00Z" },
     { id: "tBHdU2xy_Hk", title: "Trier ses dépenses en 3 piles (sans culpabiliser)", publishedAt: "2026-11-01T09:00:00Z" },
     { id: "NhA47m7eIZU", title: "Argent et stress : les 3 pièges de ta tête", publishedAt: "2026-10-28T17:00:00Z" },
